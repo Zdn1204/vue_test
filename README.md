@@ -1,24 +1,87 @@
-# vue_test
+# 笔记
 
-## Project setup
-```
-npm install
-```
+## ref属性
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+    1.被用来给元素或子组件注册引用信息（id的替代者）
+    2.应用在html标签上获取到时真实DOM元素，应用在组件标签上是组件实例对象（vc）
+    3.使用方式：
+        打标识：<h1 ref="xxx">.....</h1>或<School ref="xxx"></School>
+        获取：this.$refs.xxx
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 配置项props
 
-### Lints and fixes files
-```
-npm run lint
-```
+    功能：让组件接收外部传过来的数据
+    （1）传递数据：
+        <Demo name="xxx"/>
+    （2）接收数据：
+        第一种方式（只接收）
+            props:['name']
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+        第二种方式（限制类型）
+            props:{
+                name:Number
+            }
+
+        第三种方式（限制类型、限制必要性、指定默认值）
+            props:{
+                name:{
+                    type:String,//类型
+                    required:true.//必要型
+                    default:'老王'//默认值
+                }
+            }
+    备注：props是只读的，Vue底层会检测你对props的修改，如果进行了修改，就会发出警告，
+        若业务需求确实需要修改，那么请复制props的内容到data中一份。然后去修改data中的数据
+
+## mixin(混入)
+
+    功能：可以把多个组件共用的配置提取成一个混入对象
+    使用方式：
+        第一步定义混合，例如：
+            {
+                data(){....},
+                methods(){....}
+            }
+        第二步使用混入，例如：
+            （1）全局混入：Vue.mixin(xxx)
+            （2）局部混入：mixins:['xxx']
+
+## 插件
+    功能：用于增强Vue
+    本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
+    定义插件：
+        对象.install = function(Vue,options){
+            // 全局过滤器
+            Vue.filter('mySlice',function(value){
+                return value.slice(0,4)
+            })
+
+            // 定义全局指令
+            Vue.directive('fbind',{
+                bind(element,binding){
+                    element.value = binding.value
+                },
+                inserted(element){
+                    element.focus()
+                },
+                update(element,bingding) {
+                    element.value = bingding.value
+                },
+            })
+
+            // 定义混入
+            Vue.mixin({
+                data() {
+                    return {
+                        x:100,
+                        y:200
+                    }
+                },
+            })
+
+            // 给Vue原型上添加一个方法
+            Vue.prototype.hello = ()=>{alert('你好啊')} 
+            }
+        }
+
+    使用插件：Vue.use()
