@@ -22,7 +22,12 @@
     },
     data() {
       return {
-          todos:JSON.parse(localStorage.getItem('todos')) || []
+          todos:[
+              {id:'001',title:'吃饭',done:true},
+              {id:'002',title:'喝酒',done:true},
+              {id:'003',title:'刷碗',done:false},
+              {id:'004',title:'休息',done:true},
+              ]
       }
     },
     methods: {
@@ -55,14 +60,6 @@
         })
       }
     },
-    watch:{
-      todos:{
-        deep:true,
-        handler(value){
-          localStorage.setItem('todos',JSON.stringify(value))
-        }
-      }
-    }
   }
 </script>
 
