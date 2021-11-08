@@ -33,11 +33,10 @@ export default {
       // ...mapState({sum:'sum',school:'school',subject:'subject'}),
 
       // 借助mapState生成计算属性，从state中读取数据（数组写法）   
-      ...mapState('countAbout',['sum','school','subject']),
-      ...mapState('personAbout',['personList']),
+      ...mapState(['sum','school','subject','personList']),
 
       // 借助mapGetters生成计算属性，从getters中读取数据（数组写法）
-      ...mapGetters('countAbout',['bigSum'])
+      ...mapGetters(['bigSum'])
     },
     watch:{
       // computed中有sum，所以可以监听
@@ -58,7 +57,7 @@ export default {
       },*/
 
       // 借助mapMutations生成对应的方法，方法中会调用commit去凉席mutations（对象写法）
-      ...mapMutations('countAbout',{increment:'JIA',decrement:'JIAN'}),
+      ...mapMutations({increment:'JIA',decrement:'JIAN'}),
 
       /* incrementOdd(){
           this.$store.dispatch('jiaOdd',this.n)
@@ -68,7 +67,7 @@ export default {
       } */
 
       // 借助mapAcitons生成对应的方法，方法中会调用dispatch去练习actions（对象写法）
-      ...mapActions('countAbout',{incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
+      ...mapActions({incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
     },
   
 }

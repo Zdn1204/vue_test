@@ -1,19 +1,14 @@
 <template>
-  <div>
-    <Count/>
-    <hr>
-    <Person/>
-  </div>
+  <Count/>
 </template>
 
 <script>
 
 import Count from './components/Count'
-import Person from './components/Person'
  
   export default {
     name:'App',
-    components:{Count,Person},
+    components:{Count},
     mounted() {
      
     },
