@@ -27,16 +27,7 @@ const router = new VueRouter({
                     name:'xinwen',
                     path:'news',
                     component:News,
-                    meta:{isAuth:true,title:'新闻'},
-                    /* beforeEnter: (to, from, next) => {
-                        if(localStorage.getItem('school')==='atguigu'){
-                            // document.title = to.meta.title || '硅谷系统'
-                            next();
-                        }else{
-                            alert('学校名错误，无权限查看');
-                        }
-                    
-                    } */
+                    meta:{isAuth:true,title:'新闻'}
                 },
                 {
                     name:'xiaoxi',
@@ -73,7 +64,7 @@ const router = new VueRouter({
 })
 
 // 全局前置路由守卫——初始化的时候调用、每次路由切换之前被调用
-/* router.beforeEach((to,from,next) => {
+router.beforeEach((to,from,next) => {
     console.log(to,from);
     if(to.meta.isAuth){//判断是否需要鉴定权限
         if(localStorage.getItem('school')==='atguigu'){
@@ -86,10 +77,10 @@ const router = new VueRouter({
         // document.title = to.meta.title || '硅谷系统'
         next();
     }
-}); */
+});
 
 // 全局后置路由守卫——初始化的时候被第一啊哦用、每次路由切换之后被调用
-/* router.afterEach((to)=>{
+router.afterEach((to)=>{
     document.title = to.meta.title || '硅谷系统';
-}) */
+})
 export default router;

@@ -8,6 +8,10 @@
 export default {
     name:'About',
 
+    mounted() {
+      
+    },
+
     // 通过路由规则，进入该组件时被调用
     beforeRouteEnter (to, from, next) {
        if(localStorage.getItem('school')==='atguigu'){
@@ -20,7 +24,7 @@ export default {
     // 通过路由规则，离开该组件时被调用
     beforeRouteLeave (to, from, next) {
       next()
-    },
+    }
 
 
 }

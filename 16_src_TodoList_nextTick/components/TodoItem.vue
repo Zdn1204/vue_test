@@ -53,10 +53,12 @@ export default {
                 // todo.isEdit = true;
                 this.$set(todo,'isEdit',true)
             }
+            // 焦点的自动获取需要在input渲染之后，所以要用nextTick异步更新
             this.$nextTick(()=>{
                 this.$refs.inputTitle.focus()
             })
         },
+        
         // 失去焦点回调（真正执行修改逻辑）
         handleBlur(todo,e){
             // 不建议直接修改props，但props为对象和数组的时候，修改其中的属性或元素不会报错

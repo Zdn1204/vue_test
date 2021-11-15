@@ -11,7 +11,6 @@
         </li>
       </ul>
       <!-- 这里的News是组件名 -->
-      <!-- <keep-alive :include="['News','Message']">  缓存多个-->
       <keep-alive include="News">
         <router-view></router-view>
       </keep-alive>

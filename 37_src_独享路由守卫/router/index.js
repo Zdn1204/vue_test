@@ -28,7 +28,7 @@ const router = new VueRouter({
                     path:'news',
                     component:News,
                     meta:{isAuth:true,title:'新闻'},
-                    /* beforeEnter: (to, from, next) => {
+                    beforeEnter: (to, from, next) => {
                         if(localStorage.getItem('school')==='atguigu'){
                             // document.title = to.meta.title || '硅谷系统'
                             next();
@@ -36,7 +36,7 @@ const router = new VueRouter({
                             alert('学校名错误，无权限查看');
                         }
                     
-                    } */
+                    }
                 },
                 {
                     name:'xiaoxi',
@@ -89,7 +89,7 @@ const router = new VueRouter({
 }); */
 
 // 全局后置路由守卫——初始化的时候被第一啊哦用、每次路由切换之后被调用
-/* router.afterEach((to)=>{
+router.afterEach((to)=>{
     document.title = to.meta.title || '硅谷系统';
-}) */
+})
 export default router;
